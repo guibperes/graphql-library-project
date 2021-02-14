@@ -1,3 +1,5 @@
 import { EntitySchema } from 'typeorm';
 
-export const entities: string[] | Function[] | EntitySchema<any>[] = [];
+import { Book } from '../modules';
+
+export const entities: string[] | Function[] | EntitySchema<any>[] = [Book];
