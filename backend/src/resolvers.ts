@@ -1,3 +1,3 @@
-const hello = () => 'Hello World!!!';
+import { BookResolvers } from './modules';
 
-export const resolvers = { hello };
+export const resolvers = { ...BookResolvers };

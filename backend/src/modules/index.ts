@@ -1,1 +1,1 @@
-export { Book, BookService } from './book';
+export { Book, BookService, BookResolvers } from './book';
