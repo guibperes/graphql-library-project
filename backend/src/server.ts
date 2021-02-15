@@ -7,12 +7,9 @@ import cors from 'cors';
 import { Env } from './env';
 import { Database } from './database';
 import { logger, loggerMiddleware, GraphQL } from './libs';
+import { resolvers } from './resolvers';
 
 const schema = GraphQL.buildSchema([__dirname, 'schema.graphql']);
-
-const root = {
-  hello: () => 'Hello World!!!',
-};
 
 const app = express();
 const server = http.createServer(app);
@@ -23,7 +20,7 @@ app.use(
   '/graphql',
   graphqlHTTP({
     schema,
-    rootValue: root,
+    rootValue: resolvers,
     graphiql: true,
   })
 );
