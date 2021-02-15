@@ -19,4 +19,22 @@ const createBook = async (params: BookDTO) => {
   return response;
 };
 
-export const BookResolvers = { books, book, createBook };
+const updateBook = async (params) => {
+  const bookDTO = BookDTO.of(params);
+  const response = await BookService.updateById(params.id, bookDTO);
+
+  return response;
+};
+
+const deleteBook = async (params: IdParam) => {
+  const response = await BookService.deleteById(params.id);
+  return response;
+};
+
+export const BookResolvers = {
+  books,
+  book,
+  createBook,
+  updateBook,
+  deleteBook,
+};

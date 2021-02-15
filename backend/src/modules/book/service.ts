@@ -1,5 +1,4 @@
 import { Database } from '../../database';
-
 import { BookRepository } from './repository';
 import { Book } from './entity';
 import { BookDTO } from './dto';
@@ -17,6 +16,7 @@ const create = async (bookDTO: BookDTO): Promise<Book> => {
 
 const findAll = async (): Promise<Book[]> => {
   const repository = getBookRepository();
+
   const books = await repository.find();
 
   return books;
@@ -24,14 +24,28 @@ const findAll = async (): Promise<Book[]> => {
 
 const findById = async (id: string): Promise<Book | undefined> => {
   const repository = getBookRepository();
+
   const book = await repository.findOne(id);
 
   return book;
 };
 
-const updateById = async (id: string, bookDTO: BookDTO): Promise<Book> => {};
+const updateById = async (id: string, bookDTO: BookDTO): Promise<Book> => {
+  const repository = getBookRepository();
 
-const deleteById = async (id: string): Promise<boolean> => {};
+  const book = Book.of(bookDTO, id);
+  const updatedBook = await repository.save(book);
+
+  return updatedBook;
+};
+
+const deleteById = async (id: string): Promise<boolean> => {
+  const repository = getBookRepository();
+
+  const deleted = await repository.delete(id);
+
+  return deleted !== undefined;
+};
 
 export const BookService = {
   create,

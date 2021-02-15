@@ -18,15 +18,19 @@ export class Book extends BaseEntity {
   @Min(1)
   pages!: Number;
 
-  private constructor(title: String, description: String, pages: Number) {
-    super();
-
+  private constructor(
+    title: String,
+    description: String,
+    pages: Number,
+    id?: string
+  ) {
+    super(id);
     this.title = title;
     this.description = description;
     this.pages = pages;
   }
 
-  static of(bookDTO: BookDTO): Book {
-    return new Book(bookDTO.title, bookDTO.description, bookDTO.pages);
+  static of(bookDTO: BookDTO, id?: string): Book {
+    return new Book(bookDTO.title, bookDTO.description, bookDTO.pages, id);
   }
 }
