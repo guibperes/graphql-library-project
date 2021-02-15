@@ -2,18 +2,13 @@ import http from 'http';
 import express from 'express';
 import 'express-async-errors';
 import { graphqlHTTP } from 'express-graphql';
-import { buildSchema } from 'graphql';
 import cors from 'cors';
 
 import { Env } from './env';
 import { Database } from './database';
-import { logger, loggerMiddleware } from './libs';
+import { logger, loggerMiddleware, GraphQL } from './libs';
 
-const schema = buildSchema(`
-  type Query {
-    hello: String
-  }
-`);
+const schema = GraphQL.buildSchema([__dirname, 'schema.graphql']);
 
 const root = {
   hello: () => 'Hello World!!!',
