@@ -1,6 +1,6 @@
 import { Length, Min } from 'class-validator';
 
-export class BookCreateDTO {
+export class BookDTO {
   @Length(3, 100)
   title!: String;
 
@@ -16,11 +16,7 @@ export class BookCreateDTO {
     this.pages = pages;
   }
 
-  static of(bookCreateDTO: BookCreateDTO): BookCreateDTO {
-    return new BookCreateDTO(
-      bookCreateDTO.title,
-      bookCreateDTO.description,
-      bookCreateDTO.pages
-    );
+  static of(bookDTO: BookDTO): BookDTO {
+    return new BookDTO(bookDTO.title, bookDTO.description, bookDTO.pages);
   }
 }

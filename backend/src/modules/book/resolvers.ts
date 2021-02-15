@@ -1,6 +1,6 @@
 import { IdParam } from '../../base';
 import { BookService } from './service';
-import { BookCreateDTO } from './dto';
+import { BookDTO } from './dto';
 
 const books = async () => {
   const response = await BookService.findAll();
@@ -12,9 +12,9 @@ const book = async (params: IdParam) => {
   return response;
 };
 
-const createBook = async (params: BookCreateDTO) => {
-  const bookCreateDTO = BookCreateDTO.of(params);
-  const response = await BookService.create(bookCreateDTO);
+const createBook = async (params: BookDTO) => {
+  const bookDTO = BookDTO.of(params);
+  const response = await BookService.create(bookDTO);
 
   return response;
 };
