@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node dist/main.js",
     "dev": "tsnd --transpile-only --respawn --ignore-watch node_modules src/main.ts",
-    "build": "rimraf dist && tsc"
+    "build": "rimraf dist && tsc && copyfiles -f ./src/schema.graphql dist"
   },
   "dependencies": {
     "class-validator": "^0.13.1",
@@ -32,6 +32,7 @@
     "@types/pino": "^6.3.5",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/parser": "^4.15.0",
+    "copyfiles": "^2.4.1",
     "eslint": "^7.20.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^7.2.0",
