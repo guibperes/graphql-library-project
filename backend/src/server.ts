@@ -21,7 +21,7 @@ app.use(
   graphqlHTTP({
     schema,
     rootValue: resolvers,
-    graphiql: true,
+    graphiql: !Env.IS_PRODUCTION,
   })
 );
 

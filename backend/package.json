@@ -5,7 +5,7 @@
   "author": "Guilherme Beidaki Peres <guibperes@protonmail.com>",
   "main": "dist/main.js",
   "scripts": {
-    "start": "node dist/main.js",
+    "start": "NODE_ENV=production node dist/main.js",
     "dev": "tsnd --transpile-only --respawn --ignore-watch node_modules src/main.ts",
     "build": "rimraf dist && tsc && copyfiles -f ./src/schema.graphql dist"
   },
