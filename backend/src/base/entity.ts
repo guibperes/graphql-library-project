@@ -10,8 +10,4 @@ export abstract class BaseEntity {
 
   @UpdateDateColumn()
   updatedAt!: Date;
-
-  public constructor(id?: string) {
-    this.id = new ObjectID(id);
-  }
 }

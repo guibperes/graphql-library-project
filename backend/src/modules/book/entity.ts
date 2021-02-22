@@ -2,7 +2,7 @@ import { Entity, Column } from 'typeorm';
 import { Length, Min } from 'class-validator';
 
 import { BaseEntity } from '../../base';
-import { BookDTO } from './dto';
+import { BookCreateDTO, BookUpdateDTO } from './dto';
 
 @Entity()
 export class Book extends BaseEntity {
@@ -18,19 +18,7 @@ export class Book extends BaseEntity {
   @Min(1)
   pages!: Number;
 
-  private constructor(
-    title: String,
-    description: String,
-    pages: Number,
-    id?: string
-  ) {
-    super(id);
-    this.title = title;
-    this.description = description;
-    this.pages = pages;
-  }
-
-  static of(bookDTO: BookDTO, id?: string): Book {
-    return new Book(bookDTO.title, bookDTO.description, bookDTO.pages, id);
+  static of(dto: BookCreateDTO | BookUpdateDTO): Book {
+    return Object.assign({} as Book, dto);
   }
 }

@@ -1,11 +1,11 @@
 import { Database } from '../../database';
 import { BookRepository } from './repository';
 import { Book } from './entity';
-import { BookDTO } from './dto';
+import { BookCreateDTO, BookUpdateDTO } from './dto';
 
 const getBookRepository = () => Database.getRepository(BookRepository);
 
-const create = async (bookDTO: BookDTO): Promise<Book> => {
+const create = async (bookDTO: BookCreateDTO): Promise<Book> => {
   const repository = getBookRepository();
 
   const book = Book.of(bookDTO);
@@ -30,10 +30,10 @@ const findById = async (id: string): Promise<Book | undefined> => {
   return book;
 };
 
-const updateById = async (id: string, bookDTO: BookDTO): Promise<Book> => {
+const updateById = async (bookDTO: BookUpdateDTO): Promise<Book> => {
   const repository = getBookRepository();
 
-  const book = Book.of(bookDTO, id);
+  const book = Book.of(bookDTO);
   const updatedBook = await repository.save(book);
 
   return updatedBook;
