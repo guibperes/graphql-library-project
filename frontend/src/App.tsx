@@ -8,6 +8,8 @@ import {
 } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 
+import { BookList } from './components';
+
 const errorLink = onError(({ graphQLErrors }) =>
   graphQLErrors?.forEach(({ message }) => {
     alert(`GraphQL error ${message}`);
@@ -24,8 +26,8 @@ const client = new ApolloClient({
   link,
 });
 
-export function App() {
-  return (
-    <ApolloProvider client={client}>Hello</ApolloProvider>
-  );
+export const App: React.FC = () => {
+  return <ApolloProvider client={client}>
+    <BookList />
+  </ApolloProvider>;
 }
