@@ -19,8 +19,8 @@ export const BookList: React.FC = () => {
 
   return <div>
     {loading
-      ? 'Carregando...'
-      : books.map(book => <BookItem data={book} />)
+      ? <b>Carregando...</b>
+      : books.map(book => <BookItem key={book.id} data={book} />)
     }
   </div>;
 }

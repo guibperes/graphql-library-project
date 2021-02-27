@@ -12,7 +12,15 @@ interface Props {
 }
 
 export const BookItem: React.FC<Props> = ({ data }) => {
-  return <div>
-    {data.title}
+  return <div
+    style={{
+      marginBottom: '5px',
+      display: 'flex',
+      flexDirection: 'column',
+      maxWidth: '100%',
+    }}
+  >
+    <div>{data.title} - {data.pages} páginas</div>
+    <p>{data.description}</p>
   </div>;
 };
